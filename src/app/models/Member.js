@@ -22,8 +22,9 @@ module.exports = {
         birth,
         blood,
         weight,
-        height
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        height,
+        instructor_id
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
       RETURNING id
     `
 
@@ -35,7 +36,8 @@ module.exports = {
       date(data.birth).iso,
       data.blood,
       data.weight,
-      data.height
+      data.height,
+      data.isntructor
     ]
 
     db.query(query, values, function(err, results){
@@ -65,8 +67,9 @@ module.exports = {
       email=($5),
       blood=($6),
       weight=($7),
-      height=($8)
-    WHERE id = $9
+      height=($8),
+      instructor_id=($9)
+    WHERE id = $10
     `
 
     const values = [
@@ -78,6 +81,7 @@ module.exports = {
       data.blood,
       data.weight,
       data.height,
+      data.instructor,
       data.id
     ]
 
