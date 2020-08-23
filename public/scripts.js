@@ -14,8 +14,9 @@ for (item of menuItems) {
 // [1, ..., 13, 14, 15, 16, 17, ..., 20]
 
 let totalPages = 20,
-    selectedPage = 15
-    pages = []
+    selectedPage = 6,
+    pages = [],
+    oldPage
 
 for(let currentPage = 1; currentPage <= totalPages; currentPage++) {
 
@@ -25,7 +26,17 @@ for(let currentPage = 1; currentPage <= totalPages; currentPage++) {
   
 
   if(firstAndLastPage || pagesBeforeSlectedPage && pagesAfterSelectedPage) {
+    if(oldPage && currentPage - oldPage > 2) {
+      pages.push("...")
+    }
+    
+    if(oldPage && currentPage - oldPage == 2) {
+      pages.push(oldPage + 1)
+    }
+
     pages.push(currentPage)
+
+    oldPage = currentPage
   }
 }
 
