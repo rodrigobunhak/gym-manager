@@ -124,11 +124,11 @@ module.exports = {
 
       filterQuery = `
       WHERE instructors.name ILIKE '%${filter}%'
-      OR isntructors.services ILIKE '%${filter}%'
+      OR instructors.services ILIKE '%${filter}%'
       `
 
       totalQuery = `(
-        SELECT coun(*) FROM instructors
+        SELECT count(*) FROM instructors
         ${filterQuery}
       ) AS total`
     }
